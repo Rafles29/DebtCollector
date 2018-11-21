@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DebtCollector.People
+namespace DebtCollector.Models
 {
-    class PersonListViewModel :BindableBase
+    public class Person
     {
+        public string Nickname { get; set; }
     }
 }

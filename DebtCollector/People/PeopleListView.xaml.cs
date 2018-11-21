@@ -18,9 +18,9 @@ namespace DebtCollector.People
     /// <summary>
     /// Logika interakcji dla klasy PersonListView.xaml
     /// </summary>
-    public partial class PersonListView : UserControl
+    public partial class PeopleListView : UserControl
     {
-        public PersonListView()
+        public PeopleListView()
         {
             InitializeComponent();
         }

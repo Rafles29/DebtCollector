@@ -11,7 +11,7 @@ namespace DebtCollector
     class MainWindowViewModel :BindableBase
     {
         private DebtListViewModel _debtListViewModel = new DebtListViewModel();
-        private PersonListViewModel _personListViewModel = new PersonListViewModel();
+        private PeopleListViewModel _personListViewModel = new PeopleListViewModel();
 
         private BindableBase _currentViewModel;
 

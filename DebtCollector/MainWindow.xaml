@@ -12,8 +12,8 @@
         <local:MainWindowViewModel></local:MainWindowViewModel>
     </Window.DataContext>
     <Window.Resources>
-        <DataTemplate DataType="{x:Type people:PersonListViewModel}">
-            <people:PersonListView></people:PersonListView>
+        <DataTemplate DataType="{x:Type people:PeopleListViewModel}">
+            <people:PeopleListView></people:PeopleListView>
         </DataTemplate>
         <DataTemplate DataType="{x:Type debts:DebtListViewModel}">
             <debts:DebtListView></debts:DebtListView>
