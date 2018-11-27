@@ -4,25 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DebtCollector"
-        xmlns:people="clr-namespace:DebtCollector.People"
         xmlns:debts="clr-namespace:DebtCollector.Debts"
+        xmlns:file="clr-namespace:DebtCollector.FileSource"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
         <local:MainWindowViewModel></local:MainWindowViewModel>
     </Window.DataContext>
     <Window.Resources>
-        <DataTemplate DataType="{x:Type people:PeopleListViewModel}">
-            <people:PeopleListView></people:PeopleListView>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type people:AddEditPersonViewModel}">
-            <people:AddEditPersonView></people:AddEditPersonView>
-        </DataTemplate>
         <DataTemplate DataType="{x:Type debts:DebtListViewModel}">
             <debts:DebtListView></debts:DebtListView>
         </DataTemplate>
         <DataTemplate DataType="{x:Type debts:AddEditDebtViewModel}">
             <debts:AddEditDebtView></debts:AddEditDebtView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type file:EditFileSourceViewModel}">
+            <file:EditFileSourceView></file:EditFileSourceView>
         </DataTemplate>
     </Window.Resources>
     <Grid>
@@ -36,7 +33,7 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Button Content="Debts" Command="{Binding NavCommand}" CommandParameter="debts" Grid.Row="0" ></Button>
-            <Button Content="People" Command="{Binding NavCommand}" CommandParameter="people" Grid.Row="1"></Button>
+            <Button Content="XML" Command="{Binding NavCommand}" CommandParameter="file" Grid.Row="1"></Button>
         </Grid>
         <Grid x:Name="MainContent" Grid.Column="1">
             <ContentControl Content="{Binding CurrentViewModel}" ></ContentControl>

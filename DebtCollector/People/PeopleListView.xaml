@@ -24,6 +24,12 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding Adress.City}" Header="City">
+                    
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Adress.PostCode}" Header="Postal Code">
+
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         

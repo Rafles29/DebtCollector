@@ -12,6 +12,6 @@ namespace DebtCollector.Models
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
         public double Amount { get; set; }
-        public string Deptor { get; set; }
+        public Person Deptor { get; set; }
     }
 }

@@ -91,13 +91,23 @@ namespace DebtCollector.Repos
             {
                 Nickname = "Random",
                 FirstName = "Rav",
-                LastName ="Woz"
+                LastName ="Woz",
+                Adress = new Adress()
+                {
+                    City = "Warszawa",
+                    PostCode = "02-781"
+                }
             });
             this.People.Add(new Person()
             {
                 Nickname = "Random2",
                 FirstName = "Rafa",
-                LastName = "Wozn"
+                LastName = "Wozn",
+                Adress = new Adress()
+                {
+                    City = "Warszawa",
+                    PostCode = "02-783"
+                }
             });
         }
     }

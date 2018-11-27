@@ -17,8 +17,16 @@
             <Button Content="Add Debt" Command="{Binding AddDebtCommand}" HorizontalAlignment="Left" Grid.Row="0"></Button>
         </Grid>
 
-        <DataGrid ItemsSource="{Binding Debts}" Grid.Row="1" CanUserAddRows="False">
+        <DataGrid ItemsSource="{Binding Debts}" Grid.Row="1" CanUserAddRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Deptor" Binding="{Binding Deptor.Nickname}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Start" Binding="{Binding Start}"></DataGridTextColumn>
+                <DataGridTextColumn Header="End" Binding="{Binding End}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Amount" Binding="{Binding Amount}"></DataGridTextColumn>
+                <DataGridTextColumn Header="FirstName" Binding="{Binding Deptor.FirstName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="LastName" Binding="{Binding Deptor.LastName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="City" Binding="{Binding Deptor.Adress.City}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Postal Code" Binding="{Binding Deptor.Adress.PostCode}"></DataGridTextColumn>
                 <DataGridTemplateColumn Width="Auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

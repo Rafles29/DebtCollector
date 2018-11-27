@@ -94,7 +94,17 @@ namespace DebtCollector.Repos
                 Start = DateTime.Now,
                 End = DateTime.Now.AddMonths(1),
                 Amount = 1000,
-                Deptor = "Random"
+                Deptor = new Person()
+                {
+                    Nickname = "Random",
+                    FirstName = "Rav",
+                    LastName = "Woz",
+                    Adress = new Adress()
+                    {
+                        City = "Warszawa",
+                        PostCode = "02-781"
+                    }
+                }
             });
             this.Debts.Add(new Debt()
             {
@@ -102,7 +112,17 @@ namespace DebtCollector.Repos
                 Start = DateTime.Now,
                 End = DateTime.Now.AddMonths(2),
                 Amount = 2000,
-                Deptor = "Random2"
+                Deptor = new Person()
+                {
+                    Nickname = "Random2",
+                    FirstName = "Rafa",
+                    LastName = "Wozn",
+                    Adress = new Adress()
+                    {
+                        City = "Warszawa",
+                        PostCode = "02-783"
+                    }
+                }
             });
         }
     }

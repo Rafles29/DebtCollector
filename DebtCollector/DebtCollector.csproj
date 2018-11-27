@@ -66,8 +66,14 @@
       <DependentUpon>DebtListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Debts\DebtListViewModel.cs" />
+    <Compile Include="FileSource\EditFileSourceView.xaml.cs">
+      <DependentUpon>EditFileSourceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FileSource\EditFileSourceViewModel.cs" />
     <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="Models\Adress.cs" />
     <Compile Include="Models\Debt.cs" />
+    <Compile Include="Models\FileXML.cs" />
     <Compile Include="Models\IDebtRepository.cs" />
     <Compile Include="Models\IPeopleRepository.cs" />
     <Compile Include="Models\Person.cs" />
@@ -87,6 +93,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Debts\DebtListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FileSource\EditFileSourceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

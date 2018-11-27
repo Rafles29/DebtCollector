@@ -2,6 +2,7 @@
 using DebtCollector.Models;
 using DebtCollector.People;
 using DebtCollector.Repos;
+using DebtCollector.FileSource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,34 +14,19 @@ namespace DebtCollector
     class MainWindowViewModel :BindableBase
     {
         private DebtListViewModel _debtListViewModel = new DebtListViewModel();
-        private PeopleListViewModel _personListViewModel = new PeopleListViewModel();
-        private AddEditPersonViewModel _addEditPersonViewModel = new AddEditPersonViewModel();
         private AddEditDebtViewModel _addEditDebtViewModel = new AddEditDebtViewModel();
+        private EditFileSourceViewModel _editFileSourceViewModel = new EditFileSourceViewModel();
 
         private BindableBase _currentViewModel;
 
         public MainWindowViewModel()
         {
+            _currentViewModel = _editFileSourceViewModel;
             NavCommand = new RelayCommand<string>(OnNav);
-            _personListViewModel.AddPersonRequested += NavToAddPerson;
-            _personListViewModel.EditPersonRequested += NavToEditPerson;
             _debtListViewModel.AddDebtRequested += NavToAddDebt;
             _debtListViewModel.EditDebtRequested += NavToEditDebt;
         }
 
-        private void NavToEditPerson(Person person)
-        {
-            _addEditPersonViewModel.EditMode = true;
-            _addEditPersonViewModel.SetPerson(person);
-            CurrentViewModel = _addEditPersonViewModel;
-        }
-
-        private void NavToAddPerson(Person person)
-        {
-            _addEditPersonViewModel.EditMode = false;
-            _addEditPersonViewModel.SetPerson(person);
-            CurrentViewModel = _addEditPersonViewModel;
-        }
 
         private void NavToEditDebt(Debt debt)
         {
@@ -68,13 +54,11 @@ namespace DebtCollector
         {
             switch (destination)
             {
-                case "people":
-                    this._personListViewModel.Repo = new PeopleXmlRepository("people.xml");
-                    this._personListViewModel.GetPeople();
-                    CurrentViewModel = _personListViewModel;
+                case "file":
+                    CurrentViewModel = _editFileSourceViewModel;
                     break;
                 case "debts":
-                    this._debtListViewModel.Repo = new DebtXmlReposiotry("debts.xml");
+                    this._debtListViewModel.Repo = new DebtXmlReposiotry(this._editFileSourceViewModel.FileSource.FileName);
                     this._debtListViewModel.GetDebts();
                     CurrentViewModel = _debtListViewModel;
                     break;

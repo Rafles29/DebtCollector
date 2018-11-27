@@ -11,5 +11,6 @@ namespace DebtCollector.Models
         public string Nickname { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public Adress Adress { get; set; }
     }
 }
