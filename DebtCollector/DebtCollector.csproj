@@ -35,8 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -65,6 +67,10 @@
     <Compile Include="Models\IDebtRepository.cs" />
     <Compile Include="Models\IPeopleRepository.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="People\AddEditPersonView.xaml.cs">
+      <DependentUpon>AddEditPersonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="People\AddEditPersonViewModel.cs" />
     <Compile Include="People\PeopleListView.xaml.cs">
       <DependentUpon>PeopleListView.xaml</DependentUpon>
     </Compile>
@@ -88,6 +94,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="People\AddEditPersonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="People\PeopleListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -111,6 +121,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\DebtCollector.Models.Debt.datasource" />
+    <None Include="Properties\DataSources\DebtCollector.Models.Person.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

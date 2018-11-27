@@ -15,6 +15,7 @@ namespace DebtCollector.Repos
         public DebtXmlReposiotry()
         {
             Seed();
+            this.WriteXml();
         }
         public DebtXmlReposiotry(string fileName)
         {
@@ -27,14 +28,14 @@ namespace DebtCollector.Repos
             this.WriteXml();
         }
 
-        public void DeleteDebt(int id)
+        public void DeleteDebt(Guid id)
         {
             var index = this.Debts.FindIndex(d => d.Id == id);
             this.Debts.RemoveAt(index);
             this.WriteXml();
         }
 
-        public Debt GetDebt(int id)
+        public Debt GetDebt(Guid id)
         {           
             return this.Debts.FirstOrDefault(d => d.Id == id);
         }
@@ -54,7 +55,7 @@ namespace DebtCollector.Repos
         }
         private List<Debt> ReadXml()
         {
-            System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(Debt));
+            System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(List<Debt>));
             try
             {
                 System.IO.StreamReader file = new System.IO.StreamReader(fileName);
@@ -71,7 +72,7 @@ namespace DebtCollector.Repos
         private void WriteXml()
         {
             System.Xml.Serialization.XmlSerializer writer =
-                new System.Xml.Serialization.XmlSerializer(typeof(Debt));
+                new System.Xml.Serialization.XmlSerializer(typeof(List<Debt>));
 
             var path = this.fileName;
             if(path == null)
@@ -89,7 +90,7 @@ namespace DebtCollector.Repos
             this.Debts = new List<Debt>();
             this.Debts.Add(new Debt()
             {
-                Id = 1,
+                Id = Guid.NewGuid(),
                 Start = DateTime.Now,
                 End = DateTime.Now.AddMonths(1),
                 Amount = 1000,
@@ -97,7 +98,7 @@ namespace DebtCollector.Repos
             });
             this.Debts.Add(new Debt()
             {
-                Id = 2,
+                Id = Guid.NewGuid(),
                 Start = DateTime.Now,
                 End = DateTime.Now.AddMonths(2),
                 Amount = 2000,

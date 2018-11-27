@@ -9,9 +9,9 @@ namespace DebtCollector.Models
     public interface IDebtRepository
     {
         void CreateDebt(Debt debt);
-        Debt GetDebt(int id);
+        Debt GetDebt(Guid id);
         IEnumerable<Debt> GetDebts();
         void UpdateDebt(Debt updatedDebt);
-        void DeleteDebt(int id);
+        void DeleteDebt(Guid id);
     }
 }

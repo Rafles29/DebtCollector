@@ -11,7 +11,14 @@ namespace DebtCollector.Debts
 {
     class DebtListViewModel: BindableBase
     {
-        private IDebtRepository _repo = new DebtXmlReposiotry();
+        private IDebtRepository _repo;
+        public IDebtRepository Repo
+        {
+            get { return _repo; }
+            set {
+                SetProperty(ref _repo, value);
+            }
+        }
 
         private ObservableCollection<Debt> _debts;
         public ObservableCollection<Debt> Debts
