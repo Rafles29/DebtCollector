@@ -21,6 +21,9 @@
         <DataTemplate DataType="{x:Type debts:DebtListViewModel}">
             <debts:DebtListView></debts:DebtListView>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type debts:AddEditDebtViewModel}">
+            <debts:AddEditDebtView></debts:AddEditDebtView>
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>

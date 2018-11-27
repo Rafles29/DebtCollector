@@ -27,10 +27,32 @@ namespace DebtCollector.Debts
             set { SetProperty(ref _debts, value); }
         }
 
+        public DebtListViewModel()
+        {
+            AddDebtCommand = new RelayCommand(OnAddDebt);
+            EditDebtCommand = new RelayCommand<Debt>(OnEditDebt);
+        }
+
+        public event Action<Debt> AddDebtRequested = delegate { };
+        public event Action<Debt> EditDebtRequested = delegate { };
+
+        private void OnEditDebt(Debt debt)
+        {
+            EditDebtRequested(debt);
+        }
+
+        private void OnAddDebt()
+        {
+            AddDebtRequested(new Debt());
+        }
+
         public void GetDebts()
         {
             this.Debts = new ObservableCollection<Debt>(this._repo.GetDebts());
         }
+
+        public RelayCommand AddDebtCommand { get; private set; }
+        public RelayCommand<Debt> EditDebtCommand { get; private set; }
 
     }
 }

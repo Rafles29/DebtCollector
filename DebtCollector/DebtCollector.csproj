@@ -58,6 +58,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BindableBase.cs" />
+    <Compile Include="Debts\AddEditDebtView.xaml.cs">
+      <DependentUpon>AddEditDebtView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Debts\AddEditDebtViewModel.cs" />
     <Compile Include="Debts\DebtListView.xaml.cs">
       <DependentUpon>DebtListView.xaml</DependentUpon>
     </Compile>
@@ -78,6 +82,10 @@
     <Compile Include="RelayCommand.cs" />
     <Compile Include="Repos\DebtXmlReposiotry.cs" />
     <Compile Include="Repos\PeopleXmlRepository.cs" />
+    <Page Include="Debts\AddEditDebtView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Debts\DebtListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

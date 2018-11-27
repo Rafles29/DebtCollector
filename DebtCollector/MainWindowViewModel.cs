@@ -15,28 +15,45 @@ namespace DebtCollector
         private DebtListViewModel _debtListViewModel = new DebtListViewModel();
         private PeopleListViewModel _personListViewModel = new PeopleListViewModel();
         private AddEditPersonViewModel _addEditPersonViewModel = new AddEditPersonViewModel();
+        private AddEditDebtViewModel _addEditDebtViewModel = new AddEditDebtViewModel();
 
         private BindableBase _currentViewModel;
 
         public MainWindowViewModel()
         {
             NavCommand = new RelayCommand<string>(OnNav);
-            _personListViewModel.AddPersonRequested += NavToAddCustomer;
-            _personListViewModel.EditPersonRequested += NavToAddEdit;
+            _personListViewModel.AddPersonRequested += NavToAddPerson;
+            _personListViewModel.EditPersonRequested += NavToEditPerson;
+            _debtListViewModel.AddDebtRequested += NavToAddDebt;
+            _debtListViewModel.EditDebtRequested += NavToEditDebt;
         }
 
-        private void NavToAddEdit(Person person)
+        private void NavToEditPerson(Person person)
         {
             _addEditPersonViewModel.EditMode = true;
             _addEditPersonViewModel.SetPerson(person);
             CurrentViewModel = _addEditPersonViewModel;
         }
 
-        private void NavToAddCustomer(Person person)
+        private void NavToAddPerson(Person person)
         {
             _addEditPersonViewModel.EditMode = false;
             _addEditPersonViewModel.SetPerson(person);
             CurrentViewModel = _addEditPersonViewModel;
+        }
+
+        private void NavToEditDebt(Debt debt)
+        {
+            _addEditDebtViewModel.EditMode = true;
+            _addEditDebtViewModel.SetDebt(debt);
+            CurrentViewModel = _addEditDebtViewModel;
+        }
+
+        private void NavToAddDebt(Debt debt)
+        {
+            _addEditDebtViewModel.EditMode = false;
+            _addEditDebtViewModel.SetDebt(debt);
+            CurrentViewModel = _addEditDebtViewModel;
         }
 
         public BindableBase CurrentViewModel

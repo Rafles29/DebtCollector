@@ -9,6 +9,24 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <Grid>
-        <DataGrid ItemsSource="{Binding Debts}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Button Content="Add Debt" Command="{Binding AddDebtCommand}" HorizontalAlignment="Left" Grid.Row="0"></Button>
+        </Grid>
+
+        <DataGrid ItemsSource="{Binding Debts}" Grid.Row="1" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Edit" Command="{Binding DataContext.EditDebtCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding}" Margin="5"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>
