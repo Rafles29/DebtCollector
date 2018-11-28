@@ -25,20 +25,29 @@ namespace DebtCollector
             NavCommand = new RelayCommand<string>(OnNav);
             _debtListViewModel.AddDebtRequested += NavToAddDebt;
             _debtListViewModel.EditDebtRequested += NavToEditDebt;
+            _addEditDebtViewModel.Done += NavToDebtList;
         }
 
+        private void NavToDebtList()
+        {
+            this._debtListViewModel.Repo = new DebtXmlReposiotry(this._editFileSourceViewModel.FileSource.FileName);
+            this._debtListViewModel.GetDebts();
+            CurrentViewModel = _debtListViewModel;
+        }
 
         private void NavToEditDebt(Debt debt)
         {
             _addEditDebtViewModel.EditMode = true;
-            _addEditDebtViewModel.SetDebt(debt);
+            _addEditDebtViewModel.Debt = debt;
+            _addEditDebtViewModel.Repo = new DebtXmlReposiotry(this._editFileSourceViewModel.FileSource.FileName);
             CurrentViewModel = _addEditDebtViewModel;
         }
 
         private void NavToAddDebt(Debt debt)
         {
             _addEditDebtViewModel.EditMode = false;
-            _addEditDebtViewModel.SetDebt(debt);
+            _addEditDebtViewModel.Debt = debt;
+            _addEditDebtViewModel.Repo = new DebtXmlReposiotry(this._editFileSourceViewModel.FileSource.FileName);
             CurrentViewModel = _addEditDebtViewModel;
         }
 

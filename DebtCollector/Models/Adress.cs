@@ -6,9 +6,35 @@ using System.Threading.Tasks;
 
 namespace DebtCollector.Models
 {
-    public class Adress
+    public class Adress: BindableBase
     {
-        public string City { get; set; }
-        public string PostCode { get; set; }
+        public Adress()
+        {
+            this.City = "Warszawa";
+            this.PostCode = "00-000";
+        }
+        private string _city;
+        public string City
+        {
+            get
+            {
+                return _city;
+            } set
+            {
+                SetProperty(ref _city, value);
+            }
+        }
+        private string _postCode;
+        public string PostCode
+        {
+            get
+            {
+                return _postCode;
+            }
+            set
+            {
+                SetProperty(ref _postCode, value);
+            }
+        }
     }
 }

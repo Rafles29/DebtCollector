@@ -66,6 +66,7 @@
       <DependentUpon>DebtListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Debts\DebtListViewModel.cs" />
+    <Compile Include="Debts\SimpleEditableDebt.cs" />
     <Compile Include="FileSource\EditFileSourceView.xaml.cs">
       <DependentUpon>EditFileSourceView.xaml</DependentUpon>
     </Compile>
