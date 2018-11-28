@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace DebtCollector.Debts
 {
@@ -31,6 +32,8 @@ namespace DebtCollector.Debts
         {
             AddDebtCommand = new RelayCommand(OnAddDebt);
             EditDebtCommand = new RelayCommand<Debt>(OnEditDebt);
+            DeletDebtCommand = new RelayCommand<Guid>(OnDeleteDebt);
+
         }
 
         public event Action<Debt> AddDebtRequested = delegate { };
@@ -46,6 +49,15 @@ namespace DebtCollector.Debts
             AddDebtRequested(new Debt());
         }
 
+        private void OnDeleteDebt(Guid id)
+        {
+            if (MessageBox.Show("Are you sure?", "Are you sure?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                this.Repo.DeleteDebt(id);
+                this.GetDebts();
+            }
+        }
+
         public void GetDebts()
         {
             this.Debts = new ObservableCollection<Debt>(this._repo.GetDebts());
@@ -53,6 +65,7 @@ namespace DebtCollector.Debts
 
         public RelayCommand AddDebtCommand { get; private set; }
         public RelayCommand<Debt> EditDebtCommand { get; private set; }
+        public RelayCommand<Guid> DeletDebtCommand { get; private set; }
 
     }
 }
