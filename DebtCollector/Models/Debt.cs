@@ -12,7 +12,7 @@ namespace DebtCollector.Models
         {
             this.Id = Guid.NewGuid();
             this.Start = DateTime.Now;
-            this.Start = DateTime.Now.AddDays(1);
+            this.End = DateTime.Now.AddDays(1);
             this.Amount = 0;
             this.Deptor = new Person();
         }

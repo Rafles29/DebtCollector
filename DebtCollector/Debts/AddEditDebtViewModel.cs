@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace DebtCollector.Debts
 {
@@ -60,13 +61,22 @@ namespace DebtCollector.Debts
         {
             if(EditMode)
             {
-                this.Repo.UpdateDebt(this.Debt);
+                if(MessageBox.Show("Are you sure?", "Are you sure?", MessageBoxButton.YesNo, MessageBoxImage.Question)==MessageBoxResult.Yes)
+                {
+                    this.Repo.UpdateDebt(this.Debt);
+                    Done();
+                }
+                
             }
             else
             {
-                this.Repo.CreateDebt(this.Debt);
+                if (MessageBox.Show("Are you sure?", "Are you sure?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    this.Repo.CreateDebt(this.Debt);
+                    Done();
+                }
             }
-            Done();
+            
         }
     }
 }
