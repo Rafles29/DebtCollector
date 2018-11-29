@@ -6,9 +6,19 @@ using System.Threading.Tasks;
 
 namespace DebtCollector.Models
 {
-    public class FileXML
+    public class FileXML: BindableBase
     {
-        public string FileName { get; set; }
-        public DateTime DateTime { get; set; }
+        private string _fileName;
+        public string FileName
+        {
+            get
+            {
+                return _fileName;
+            }
+            set
+            {
+                SetProperty(ref _fileName, value);
+            }
+        }
     }
 }

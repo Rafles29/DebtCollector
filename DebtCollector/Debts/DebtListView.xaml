@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:DebtCollector.Debts"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Class="DebtCollector.Debts.DebtListView"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -26,7 +26,6 @@
                 <DataGridTextColumn Header="FirstName" Binding="{Binding Deptor.FirstName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="LastName" Binding="{Binding Deptor.LastName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="City" Binding="{Binding Deptor.Adress.City}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Postal Code" Binding="{Binding Deptor.Adress.PostCode}"></DataGridTextColumn>
                 <DataGridTemplateColumn Width="Auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
